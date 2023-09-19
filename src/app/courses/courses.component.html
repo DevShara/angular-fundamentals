@@ -10,6 +10,20 @@
 
             <!-- COURSES LIST -->
 
+            <ul>
+                <li *ngFor="let course of courses" (click)="selectCourse(course)">
+                    {{course.title}}
+                    <button 
+                        mat-icon-button
+                        color="warn"
+                        (click) = "deleteCourse(course.id); $event.stopImmediatePropagation()"
+                        >
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    
+                </li>
+            </ul>
+
         </mat-card-content>
         </mat-card>
     </div>
@@ -23,7 +37,7 @@
             </mat-card-header>
             <mat-card-content>
             
-            <!-- COURSE FORM -->
+            {{selectedCourse | json}}
 
             </mat-card-content>
             <mat-card-actions>
