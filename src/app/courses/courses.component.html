@@ -10,8 +10,8 @@
 
             <!-- COURSES LIST -->
 
-            <ul>
-                <li *ngFor="let course of courses" (click)="selectCourse(course)">
+            <mat-list>
+                <mat-list-item *ngFor="let course of courses" (click)="selectCourse(course)">
                     {{course.title}}
                     <button 
                         mat-icon-button
@@ -21,8 +21,8 @@
                         <mat-icon>delete</mat-icon>
                     </button>
                     
-                </li>
-            </ul>
+                </mat-list-item>
+            </mat-list>
 
         </mat-card-content>
         </mat-card>
@@ -32,17 +32,22 @@
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    Select Course
+                    <span *ngIf="selectedCourse?.id; else elseBlock">
+                        {{selectedCourse.title | titlecase}}
+                    </span>
+                    <ng-template #elseBlock>Select a course</ng-template>
                 </mat-card-title>
             </mat-card-header>
+            
             <mat-card-content>
             
             {{selectedCourse | json}}
 
             </mat-card-content>
+            
             <mat-card-actions>
 
-            <!-- COURSE ACTIONS -->
+                <button type="button" mat-button (click)="selectCourse(null)">Reset</button>
 
             </mat-card-actions>
         </mat-card>
