@@ -33,7 +33,8 @@
       <mat-card-header>
         <mat-card-title>
           <span *ngIf="selectedCourse?.id; else elseBlock">
-            {{ selectedCourse.title | titlecase }}
+            <!-- remove title case pipe -->
+            {{ selectedCourse.title }}
           </span>
           <ng-template #elseBlock>Select a course</ng-template>
         </mat-card-title>
